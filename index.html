@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>幸福度の高いことリスト</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Hiragino Sans', sans-serif;
+    background: #0c0e14; color: #e0e0e0;
+    padding: 28px 20px; max-width: 720px; margin: 0 auto;
+  }
+
+  .header { text-align: center; margin-bottom: 32px; }
+  .header h1 { font-size: 1.3rem; color: #fff; margin-bottom: 6px; letter-spacing: 0.5px; }
+  .header p { color: #666; font-size: 0.78rem; }
+
+  .pillar {
+    margin-bottom: 16px; border-radius: 14px; overflow: hidden;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    cursor: pointer; transition: transform 0.15s;
+  }
+  .pillar:hover { transform: scale(1.01); }
+
+  .pillar-header {
+    padding: 18px 20px 14px; display: flex; align-items: center; gap: 14px;
+  }
+  .pillar-icon { font-size: 1.8rem; filter: grayscale(0); }
+  .pillar-main { flex: 1; }
+  .pillar-title { font-size: 1.1rem; font-weight: 700; color: #fff; }
+  .pillar-sub { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+  .pillar-arrow {
+    font-size: 0.8rem; color: rgba(255,255,255,0.3);
+    transition: transform 0.2s;
+  }
+  .pillar.open .pillar-arrow { transform: rotate(90deg); }
+
+  .pillar-body {
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    background: rgba(0,0,0,0.2);
+  }
+  .pillar.open .pillar-body { max-height: 600px; }
+
+  .examples {
+    padding: 10px 20px 16px; display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .tag {
+    padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .tag.fav { background: rgba(255,255,255,0.14); color: #fff; font-weight: 500; }
+
+  .quote {
+    padding: 0 20px 14px; font-size: 0.75rem; color: rgba(255,255,255,0.35);
+    font-style: italic;
+  }
+
+  /* Pillar colors */
+  .p1 { --bg1: #1a2332; --bg2: #162028; }
+  .p2 { --bg1: #1e2a1e; --bg2: #182218; }
+  .p3 { --bg1: #2a1e2a; --bg2: #221828; }
+  .p4 { --bg1: #2a2518; --bg2: #221e14; }
+  .p5 { --bg1: #18242a; --bg2: #142022; }
+
+  .booster {
+    margin-top: 24px; border-radius: 14px; padding: 18px 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16162a);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .booster-title {
+    font-size: 0.85rem; font-weight: 600; color: #f5a623;
+    margin-bottom: 12px;
+  }
+  .combo {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 0; font-size: 0.82rem; color: rgba(255,255,255,0.6);
+  }
+  .combo-result { color: #fff; font-weight: 500; }
+  .combo-op { color: #f5a623; font-weight: 700; font-size: 0.9rem; }
+
+  .footer {
+    text-align: center; margin-top: 28px; padding: 16px;
+    color: #555; font-size: 0.75rem; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Yuの幸福度の高いことリスト</h1>
+  <p>迷ったらこの5つのどれかをやれ。それだけでいい。</p>
+</div>
+
+<!-- ===== 1. つくる × 味わう ===== -->
+<div class="pillar p1 open" onclick="this.classList.toggle('open')">
+  <div class="pillar-header">
+    <span class="pillar-icon">🍳</span>
+    <div class="pillar-main">
+      <div class="pillar-title">つくる × 味わう</div>
+      <div class="pillar-sub">手を動かして、美味しいものを食べて飲む</div>
+    </div>
+    <span class="pillar-arrow">▶</span>
+  </div>
+  <div class="pillar-body">
+    <div class="examples">
+      <span class="tag fav">せいろ料理</span>
+      <span class="tag fav">冩樂</span>
+      <span class="tag">ポテサラ</span>
+      <span class="tag">鮪づけ丼</span>
+      <span class="tag">餃子</span>
+      <span class="tag">XISTO</span>
+      <span class="tag">クラフトビール</span>
+      <span class="tag">ビアボール</span>
+      <span class="tag">かぼちゃサラダ</span>
+      <span class="tag">蒸しそば</span>
+    </div>
+    <div class="quote">「最高」「幸福度が高い」「みゆき暫定1位」</div>
+  </div>
+</div>
+
+<!-- ===== 2. 動く ===== -->
+<div class="pillar p2" onclick="this.classList.toggle('open')">
+  <div class="pillar-header">
+    <span class="pillar-icon">🏃</span>
+    <div class="pillar-main">
+      <div class="pillar-title">動く</div>
+      <div class="pillar-sub">身体を使って、達成感と仲間を得る</div>
+    </div>
+    <span class="pillar-arrow">▶</span>
+  </div>
+  <div class="pillar-body">
+    <div class="examples">
+      <span class="tag fav">ラン</span>
+      <span class="tag fav">朝HIIT</span>
+      <span class="tag">自転車ライド</span>
+      <span class="tag">トレラン</span>
+      <span class="tag">ストレッチ</span>
+      <span class="tag">サウナ</span>
+    </div>
+    <div class="quote">「充実、優勝。」「自信になった」「豊かになる」</div>
+  </div>
+</div>
+
+<!-- ===== 3. つながる ===== -->
+<div class="pillar p3" onclick="this.classList.toggle('open')">
+  <div class="pillar-header">
+    <span class="pillar-icon">💬</span>
+    <div class="pillar-main">
+      <div class="pillar-title">つながる</div>
+      <div class="pillar-sub">連絡する、声をかける、一緒に過ごす</div>
+    </div>
+    <span class="pillar-arrow">▶</span>
+  </div>
+  <div class="pillar-body">
+    <div class="examples">
+      <span class="tag fav">大切な人に連絡・シェア</span>
+      <span class="tag">知らない人にも声かける</span>
+      <span class="tag">飲みに誘う</span>
+      <span class="tag">1on1で話す</span>
+      <span class="tag">おもろい人と喋る</span>
+    </div>
+    <div class="quote">「声かけて良かった」「報われました」「めちゃくちゃ嬉しいやんけ！！」</div>
+  </div>
+</div>
+
+<!-- ===== 4. 没頭する ===== -->
+<div class="pillar p4" onclick="this.classList.toggle('open')">
+  <div class="pillar-header">
+    <span class="pillar-icon">🎯</span>
+    <div class="pillar-main">
+      <div class="pillar-title">没頭する</div>
+      <div class="pillar-sub">時間を忘れて、手と頭をフルに動かす</div>
+    </div>
+    <span class="pillar-arrow">▶</span>
+  </div>
+  <div class="pillar-body">
+    <div class="examples">
+      <span class="tag fav">ベース</span>
+      <span class="tag fav">Claude Code</span>
+      <span class="tag">映画・レイトショー</span>
+      <span class="tag">本・漫画・絵本</span>
+      <span class="tag">レイアウト作業</span>
+      <span class="tag">修理・モノいじり</span>
+      <span class="tag">ルービックキューブ</span>
+    </div>
+    <div class="quote">「久しぶりだこの感じ」「気持ちいいし好きだな」「全然弾けんけど楽しい」</div>
+  </div>
+</div>
+
+<!-- ===== 5. 外に出る・ゆるむ ===== -->
+<div class="pillar p5" onclick="this.classList.toggle('open')">
+  <div class="pillar-header">
+    <span class="pillar-icon">🌿</span>
+    <div class="pillar-main">
+      <div class="pillar-title">外に出る × ゆるむ</div>
+      <div class="pillar-sub">自然の中で、のんびり過ごす</div>
+    </div>
+    <span class="pillar-arrow">▶</span>
+  </div>
+  <div class="pillar-body">
+    <div class="examples">
+      <span class="tag fav">パン屋→おでかけ</span>
+      <span class="tag">花見・外で飯</span>
+      <span class="tag">動物園</span>
+      <span class="tag">いちご狩り</span>
+      <span class="tag">庭チェアで読書</span>
+      <span class="tag">植物を愛でる</span>
+      <span class="tag">昼シャワー→ビール</span>
+    </div>
+    <div class="quote">「すごいいい」「幸福感高い」「外で飯はうまい」「のどかで良かった」</div>
+  </div>
+</div>
+
+<!-- ===== Booster ===== -->
+<div class="booster">
+  <div class="booster-title">⚡ 組み合わせると破壊力倍増</div>
+  <div class="combo">
+    <span>動く</span><span class="combo-op">×</span><span>つくる</span><span class="combo-op">×</span><span>朝</span>
+    <span class="combo-op">→</span><span class="combo-result">「充実、優勝。」</span>
+  </div>
+  <div class="combo">
+    <span>外に出る</span><span class="combo-op">×</span><span>味わう</span><span class="combo-op">×</span><span>つながる</span>
+    <span class="combo-op">→</span><span class="combo-result">「最高の休日」</span>
+  </div>
+  <div class="combo">
+    <span>没頭する</span><span class="combo-op">×</span><span>達成</span>
+    <span class="combo-op">→</span><span class="combo-result">「テンション上がる」</span>
+  </div>
+</div>
+
+<div class="footer">
+  日記67日分・100以上のポジティブな瞬間から蒸留<br>
+  2026.04.07 作成
+</div>
+
+</body>
+</html>
